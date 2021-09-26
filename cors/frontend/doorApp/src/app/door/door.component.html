@@ -1,0 +1,28 @@
+<h1>See all doors</h1>
+
+<ul *ngIf="doors.length > 0">
+    <li *ngFor="let door of doors">
+        <p>{{door.type}} door ({{door.width_in}}) x ({{door.height_in}})</p>
+    </li>
+</ul>
+
+<p *ngIf="doors.length ===0">No new doors yet. Create one below</p>
+
+<h1>Create a new door below</h1>
+
+<label for="width">Width:</label>
+<input name="width" type="number" placeholder="Add a door width" required #width>
+
+<label for="height">Height:</label>
+<input name="height" type="number" placeholder="Add a door height" required #height>
+
+<label for="type">Type:</label>
+<select id="type" name="type"  #type>
+    <option value="" selected>Please choose</option>
+
+    <option value="Sliding" >Sliding</option>
+    <option value="Basic" >Basic</option>
+    <option value="Automatic" >Automatic</option>
+</select>
+
+<button type="button" (click)="createDoor(width.value, height.value, type.value)" > Create door</button>
